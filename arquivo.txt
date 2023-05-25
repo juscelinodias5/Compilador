@@ -1,1 +1,9 @@
-asdasdld#
+var = asd @@ comentario
+
+// teste comentario
+* / aaaaa
+??
+//
+
+var2 = -2*5
+

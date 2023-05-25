@@ -42,14 +42,14 @@ def identificadores(palavra):
     return token
 
 
-# if __name__ == "__main__":
-#     identificadores_validos = ['i', 'jx', 'z_teste',
-#                                'k12aa3', 'u_teste123', 'u_12tes3', 'ab#sd', 'a9#sd']
-#     identificadores_invalidos = ['z_b_bb_', 'hhz_nota',
-#                                  '2abc', '#abc', 'asd#', 'W#D#Df', '2#rt']
+if __name__ == "__main__":
+    identificadores_validos = ['i', 'jx', 'z_teste',
+                               'k12aa3', 'u_teste123', 'u_12tes3', 'ab#sd', 'a9#sd']
+    identificadores_invalidos = ['z_b_bb_', 'hhz_nota',
+                                 '2abc', '#abc', 'asd#', 'W#D#Df', '2#rt', '@@come']
 
-#     for identificador in identificadores_invalidos:
-#         print(identificadores(identificador))
+    for identificador in identificadores_invalidos:
+        print(identificadores(identificador))
 
 #  Automato para Palavras reservadas
 #  program, if, then, else, while, do, until, repeat, int, double, char, case, switch, end, procedure, function,
@@ -104,6 +104,8 @@ def simbolos_especiais(palavra):
             elif simbolo == "+":
                 estado = 5
                 token += simbolo
+            else:
+                return
         elif estado == 2 and simbolo == '=':
             estado = 1
             token += simbolo
@@ -125,8 +127,8 @@ def simbolos_especiais(palavra):
 # if __name__ == "__main__":
 #     simbolos_validos = [';', ',', '.', '+', '-', '*',
 #                         '(', ')', '<', '>', ':', '=', '{', '}', '/', '@', '#']
-#     simbolos_invalidos = [';;', ',,', '...', '<<',
-#                           '>>', '<<=', '>>=', '7', 's', '&', '%', 'wea', '//']
+#     simbolos_invalidos = [' ;', ',,', '...', '<<',
+#                           '>>', '<<=', '>>=', '7', 's', '&', '%', 'wea', 'x/']
 
 #     for palavra in simbolos_invalidos:
 #         print(simbolos_especiais(palavra))
