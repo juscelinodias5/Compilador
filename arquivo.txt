@@ -5,5 +5,4 @@ var = asd @@ comentario
 ??
 //
 
-var2 = -2*5
-
+var_2 = -2*5

@@ -4,28 +4,30 @@ from automatos_analizador_lexico import identificadores, palavras_reservadas, nu
 def lexico(nome_arquivo):
 
     with open(nome_arquivo, "r", encoding='utf') as arquivo:
-        palavra = arquivo.read()
-        while (palavra):
+        texto = arquivo.read()
+        while (texto):
             token = ''
-            if identificadores(palavra):
-                token = identificadores(palavra)
+            if texto[0] in ('\t', '\n', ' '):
+                texto = texto[1:]
+            elif identificadores(texto):
+                token = identificadores(texto)
                 print('Identificador: '+token)
-                palavra = palavra[len(token):]
-            elif comentarios(palavra):
-                token = comentarios(palavra)
+                texto = texto[len(token):]
+            elif comentarios(texto):
+                token = comentarios(texto)
                 print('Comentarios: '+token)
-                palavra = palavra[len(token):]
-            elif numeros(palavra):
-                token = numeros(palavra)
-                print('Digitos: ' + token)
-                palavra = palavra[len(token):]
-            elif simbolos_especiais(palavra):
-                token = simbolos_especiais(palavra)
+                texto = texto[len(token):]
+            elif numeros(texto):
+                token = numeros(texto)
+                print('Digito: ' + token)
+                texto = texto[len(token):]
+            elif simbolos_especiais(texto):
+                token = simbolos_especiais(texto)
                 print('simbolo especial: ' + token)
-                palavra = palavra[len(token):]
+                texto = texto[len(token):]
             else:
-                palavra = palavra[1:]
+                print('Invalidos: '+texto[0])
+                texto = texto[1:]
 
 
-list_identif = []
 lexico("arquivo.txt")
